@@ -185,6 +185,10 @@ button {
   margin-bottom: 30px;
 }
 
+.list-undefined {
+  padding-left: 40px;
+}
+
 #modal-background {
   background: rgb(255, 255, 255);
   background: linear-gradient(
