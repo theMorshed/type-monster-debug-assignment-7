@@ -4,6 +4,7 @@ const startBtn = document.getElementById("start");
 const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
+let questionLength;
 
 // variables
 let userText = "";
@@ -17,6 +18,7 @@ fetch("./texts.json")
   .then((data) => {
     questionText = data[Math.floor(Math.random() * data.length)];
     question.innerHTML = questionText;
+    questionLength = questionText.length;
   });
 
 // checks the user typed character and displays accordingly
@@ -69,6 +71,7 @@ const gameOver = () => {
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
   const timeTaken = Math.round((finishTime - startTime) / 1000);
+  const speed = Math.round((questionLength / 5) / (timeTaken / 60));
 
   // show result modal
   resultModal.innerHTML = "";
@@ -82,6 +85,7 @@ const gameOver = () => {
   resultModal.innerHTML += `
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
+    <p>You Type speed: <span class="bold">${speed}</span> WPM</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
     <button onclick="closeModal()">Close</button>
   `;
