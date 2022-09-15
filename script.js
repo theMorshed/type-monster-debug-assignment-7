@@ -85,12 +85,12 @@ const gameOver = () => {
   resultModal.innerHTML += `
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
-    <p>You Type speed: <span class="bold">${speed}</span> WPM</p>
+    <p>Your Type speed: <span class="bold">${speed}</span> WPM</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
     <button onclick="closeModal()">Close</button>
   `;
 
-  addHistory(questionText, timeTaken, errorCount);
+  addHistory(questionText, timeTaken, errorCount, speed);
 
   // restart everything
   startTime = null;
